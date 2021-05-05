@@ -28,6 +28,17 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "739f4a8db6605981345c5654f3a85b056ce52f37a39d34da03f25bf2151ea16e"
 
 [[package]]
+name = "ahash"
+version = "0.7.2"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "7f200cbb1e856866d9eade941cf3aa0c5d7dd36f74311c4273b494f4ef036957"
+dependencies = [
+ "getrandom",
+ "once_cell",
+ "version_check",
+]
+
+[[package]]
 name = "aho-corasick"
 version = "0.7.18"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -394,7 +405,7 @@ dependencies = [
  "cranelift-codegen-shared",
  "cranelift-entity",
  "gimli",
- "hashbrown",
+ "hashbrown 0.9.1",
  "log",
  "regalloc",
  "serde",
@@ -435,7 +446,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "0153680ebce89aac7cad90a5442bb136faacfc86ea62587a01b8e8e79f8249c9"
 dependencies = [
  "cranelift-codegen",
- "hashbrown",
+ "hashbrown 0.9.1",
  "log",
  "smallvec",
  "target-lexicon",
@@ -897,7 +908,16 @@ version = "0.9.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "d7afe4a420e3fe79967a00898cc1f4db7c8a49a9333a29f8a4bd76a253d5cd04"
 dependencies = [
- "ahash",
+ "ahash 0.4.7",
+]
+
+[[package]]
+name = "hashbrown"
+version = "0.11.2"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "ab5ef0d4909ef3724cc8cce6ccc8572c5c817592e9285f5464f8e86f8bd3726e"
+dependencies = [
+ "ahash 0.7.2",
 ]
 
 [[package]]
@@ -943,7 +963,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "824845a0bf897a9042383849b02c1bc219c2383772efcd5c6f9766fa4b81aef3"
 dependencies = [
  "autocfg",
- "hashbrown",
+ "hashbrown 0.9.1",
  "serde",
 ]
 
@@ -2410,7 +2430,7 @@ name = "wasmer-compiler"
 version = "1.0.2"
 dependencies = [
  "enumset",
- "hashbrown",
+ "hashbrown 0.11.2",
  "loupe",
  "rkyv",
  "serde",
@@ -2431,7 +2451,7 @@ dependencies = [
  "cranelift-entity",
  "cranelift-frontend",
  "gimli",
- "hashbrown",
+ "hashbrown 0.11.2",
  "lazy_static",
  "loupe",
  "more-asserts",
@@ -2475,7 +2495,7 @@ dependencies = [
  "byteorder",
  "dynasm",
  "dynasmrt",
- "hashbrown",
+ "hashbrown 0.11.2",
  "lazy_static",
  "loupe",
  "more-asserts",
