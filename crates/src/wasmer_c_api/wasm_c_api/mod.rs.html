@@ -320,6 +320,50 @@
 <span id="319">319</span>
 <span id="320">320</span>
 <span id="321">321</span>
+<span id="322">322</span>
+<span id="323">323</span>
+<span id="324">324</span>
+<span id="325">325</span>
+<span id="326">326</span>
+<span id="327">327</span>
+<span id="328">328</span>
+<span id="329">329</span>
+<span id="330">330</span>
+<span id="331">331</span>
+<span id="332">332</span>
+<span id="333">333</span>
+<span id="334">334</span>
+<span id="335">335</span>
+<span id="336">336</span>
+<span id="337">337</span>
+<span id="338">338</span>
+<span id="339">339</span>
+<span id="340">340</span>
+<span id="341">341</span>
+<span id="342">342</span>
+<span id="343">343</span>
+<span id="344">344</span>
+<span id="345">345</span>
+<span id="346">346</span>
+<span id="347">347</span>
+<span id="348">348</span>
+<span id="349">349</span>
+<span id="350">350</span>
+<span id="351">351</span>
+<span id="352">352</span>
+<span id="353">353</span>
+<span id="354">354</span>
+<span id="355">355</span>
+<span id="356">356</span>
+<span id="357">357</span>
+<span id="358">358</span>
+<span id="359">359</span>
+<span id="360">360</span>
+<span id="361">361</span>
+<span id="362">362</span>
+<span id="363">363</span>
+<span id="364">364</span>
+<span id="365">365</span>
 </pre><div class="example-wrap"><pre class="rust ">
 <span class="doccomment">//! Implementation of the [official WebAssembly C</span>
 <span class="doccomment">//! API](https://github.com/WebAssembly/wasm-c-api) for Wasmer.</span>
@@ -328,7 +372,7 @@
 <span class="doccomment">//! be characterized as a _living standard_. As such, the API is not</span>
 <span class="doccomment">//! yet stable, even though it shows maturity over time. The API is</span>
 <span class="doccomment">//! described by the `wasm.h` C header, which is included by</span>
-<span class="doccomment">//! `wasmer_wasm.h` C header file (which contains extension of the</span>
+<span class="doccomment">//! `wasmer.h` C header file (which contains extension of the</span>
 <span class="doccomment">//! standard API, for example to provide WASI or vendor-specific</span>
 <span class="doccomment">//! features).</span>
 <span class="doccomment">//!</span>
@@ -362,7 +406,7 @@
 <span class="doccomment">/// # use inline_c::assert_c;</span>
 <span class="doccomment">/// # fn main() {</span>
 <span class="doccomment">/// #    (assert_c! {</span>
-<span class="doccomment">/// # #include &quot;tests/wasmer_wasm.h&quot;</span>
+<span class="doccomment">/// # #include &quot;tests/wasmer.h&quot;</span>
 <span class="doccomment">/// #</span>
 <span class="doccomment">/// int main() {</span>
 <span class="doccomment">///     // Create the engine.</span>
@@ -406,7 +450,7 @@
 <span class="doccomment">/// # use inline_c::assert_c;</span>
 <span class="doccomment">/// # fn main() {</span>
 <span class="doccomment">/// #    (assert_c! {</span>
-<span class="doccomment">/// # #include &quot;tests/wasmer_wasm.h&quot;</span>
+<span class="doccomment">/// # #include &quot;tests/wasmer.h&quot;</span>
 <span class="doccomment">/// #</span>
 <span class="doccomment">/// int main() {</span>
 <span class="doccomment">///     // Create the engine and the store.</span>
@@ -464,7 +508,7 @@
 <span class="doccomment">/// # use inline_c::assert_c;</span>
 <span class="doccomment">/// # fn main() {</span>
 <span class="doccomment">/// #    (assert_c! {</span>
-<span class="doccomment">/// # #include &quot;tests/wasmer_wasm.h&quot;</span>
+<span class="doccomment">/// # #include &quot;tests/wasmer.h&quot;</span>
 <span class="doccomment">/// #</span>
 <span class="doccomment">/// int main() {</span>
 <span class="doccomment">///     // Create the engine and the store.</span>
@@ -521,7 +565,7 @@
 <span class="doccomment">/// # use inline_c::assert_c;</span>
 <span class="doccomment">/// # fn main() {</span>
 <span class="doccomment">/// #    (assert_c! {</span>
-<span class="doccomment">/// # #include &quot;tests/wasmer_wasm.h&quot;</span>
+<span class="doccomment">/// # #include &quot;tests/wasmer.h&quot;</span>
 <span class="doccomment">/// #</span>
 <span class="doccomment">/// int main() {</span>
 <span class="doccomment">///     // Create the engine.</span>
@@ -547,6 +591,50 @@
 <span class="doccomment">/// cbindgen:ignore</span>
 <span class="kw">pub</span> <span class="kw">mod</span> <span class="ident">store</span>;
 
+<span class="doccomment">/// A trap represents an error which stores trace message with</span>
+<span class="doccomment">/// backtrace.</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// # Example</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// ```rust</span>
+<span class="doccomment">/// # use inline_c::assert_c;</span>
+<span class="doccomment">/// # fn main() {</span>
+<span class="doccomment">/// #    (assert_c! {</span>
+<span class="doccomment">/// # #include &quot;tests/wasmer.h&quot;</span>
+<span class="doccomment">/// #</span>
+<span class="doccomment">/// int main() {</span>
+<span class="doccomment">///     // Create an engine and a store.</span>
+<span class="doccomment">///     wasm_engine_t* engine = wasm_engine_new();</span>
+<span class="doccomment">///     wasm_store_t* store = wasm_store_new(engine);</span>
+<span class="doccomment">///</span>
+<span class="doccomment">///     // Create the trap message.</span>
+<span class="doccomment">///     wasm_message_t message;</span>
+<span class="doccomment">///     wasm_name_new_from_string_nt(&amp;message, &quot;foobar&quot;);</span>
+<span class="doccomment">///</span>
+<span class="doccomment">///     // Create the trap with its message.</span>
+<span class="doccomment">///     // The backtrace will be generated automatically.</span>
+<span class="doccomment">///     wasm_trap_t* trap = wasm_trap_new(store, &amp;message);</span>
+<span class="doccomment">///     assert(trap);</span>
+<span class="doccomment">///</span>
+<span class="doccomment">///     wasm_name_delete(&amp;message);</span>
+<span class="doccomment">///</span>
+<span class="doccomment">///     // Do something with the trap.</span>
+<span class="doccomment">///</span>
+<span class="doccomment">///     // Free everything.</span>
+<span class="doccomment">///     wasm_trap_delete(trap);</span>
+<span class="doccomment">///     wasm_store_delete(store);</span>
+<span class="doccomment">///     wasm_engine_delete(engine);</span>
+<span class="doccomment">///</span>
+<span class="doccomment">///     return 0;</span>
+<span class="doccomment">/// }</span>
+<span class="doccomment">/// #    })</span>
+<span class="doccomment">/// #    .success();</span>
+<span class="doccomment">/// # }</span>
+<span class="doccomment">/// ```</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// Usually, a trap is returned from a host function (an imported</span>
+<span class="doccomment">/// function).</span>
+<span class="doccomment">///</span>
 <span class="doccomment">/// cbindgen:ignore</span>
 <span class="kw">pub</span> <span class="kw">mod</span> <span class="ident">trap</span>;
 
@@ -567,7 +655,7 @@
 
 <span class="doccomment">/// Wasmer-specific API to get or query the version of this Wasm C API.</span>
 <span class="doccomment">///</span>
-<span class="doccomment">/// The `wasmer_wasm.h` file provides the `WASMER_VERSION`,</span>
+<span class="doccomment">/// The `wasmer.h` file provides the `WASMER_VERSION`,</span>
 <span class="doccomment">/// `WASMER_VERSION_MAJOR`, `WASMER_VERSION_MINOR`,</span>
 <span class="doccomment">/// `WASMER_VERSION_PATCH` and `WASMER_VERSION_PRE`</span>
 <span class="doccomment">/// constants. However, in absence of this header file, it is possible</span>
@@ -584,7 +672,7 @@
 <span class="doccomment">/// # use inline_c::assert_c;</span>
 <span class="doccomment">/// # fn main() {</span>
 <span class="doccomment">/// #    (assert_c! {</span>
-<span class="doccomment">/// # #include &quot;tests/wasmer_wasm.h&quot;</span>
+<span class="doccomment">/// # #include &quot;tests/wasmer.h&quot;</span>
 <span class="doccomment">/// #</span>
 <span class="doccomment">/// int main() {</span>
 <span class="doccomment">///     // Get and print the version.</span>
@@ -616,7 +704,7 @@
 <span class="doccomment">/// # use inline_c::assert_c;</span>
 <span class="doccomment">/// # fn main() {</span>
 <span class="doccomment">/// #    (assert_c! {</span>
-<span class="doccomment">/// # #include &quot;tests/wasmer_wasm.h&quot;</span>
+<span class="doccomment">/// # #include &quot;tests/wasmer.h&quot;</span>
 <span class="doccomment">/// #</span>
 <span class="doccomment">/// int main() {</span>
 <span class="doccomment">///     // Our WAT module.</span>
